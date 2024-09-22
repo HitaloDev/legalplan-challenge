@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    border-bottom: 1px solid $border-gray-color;
+    margin-bottom: 40px;
+
+    .headline {
+        text-align: center;
+        font-weight: 500;
+        margin-left: 50px;
+    }
+
+    .date {
+        color: $text-gray-color;
+        font-size: 1rem;
+    }
+
+
+}
+
+@media screen and (max-width: 880px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+
+        .headline {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-left: 0;
+            text-align: start;
+        }
+
+        .date {
+            margin-top: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+
+        .headline {
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .date {
+            font-size: 1.07rem;
+        }
+    }
+}

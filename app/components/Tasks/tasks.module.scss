@@ -1,0 +1,389 @@
+@import '../../styles/variables';
+
+.container {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.761);
+        backdrop-filter: blur(2.5px);
+        z-index: 1000;
+        pointer-events: auto;
+    }
+
+    .container_new_task {
+        z-index: 20000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        max-width: 450px;
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        border-radius: 1rem;
+
+        .modal_content {
+            padding: 2rem;
+        }
+
+        .container.disable-interactions {
+            pointer-events: none;
+        }
+
+        .container.disable-interactions .overlay {
+            pointer-events: auto;
+        }
+
+
+        .headline_new_task {
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .title_new_task {
+            font-weight: 300;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input_new_task {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid $border-gray-color;
+            height: 51px;
+            box-sizing: border-box;
+            padding-left: 15px;
+            font-size: 1rem;
+            outline: none;
+            color: $text-gray-color;
+
+            &::placeholder {
+                color: $text-gray-color;
+            }
+        }
+
+        .buttons_new_task {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+
+            .btn_cancel_new_task {
+                width: 100%;
+                font-weight: 300;
+                font-size: 1rem;
+                color: $text-black-color;
+                background-color: $button-cancel-color;
+                border: none;
+                border-radius: 8px;
+                height: 51px;
+                cursor: pointer;
+            }
+
+            .btn_save_new_task {
+                color: $text-white-color;
+                width: 100%;
+                font-weight: 300;
+                font-size: 1rem;
+                background: rgb(7, 150, 211);
+                background: linear-gradient(90deg, rgba(7, 150, 211, 1) 0%, rgba(83, 192, 240, 1) 100%);
+                border: none;
+                border-radius: 8px;
+                height: 51px;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+
+    .container_delete_task {
+        z-index: 20000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        max-width: 450px;
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        border-radius: 1rem;
+
+        .modal_content {
+            padding: 2rem;
+        }
+
+        .headline_delete_task {
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .title_delete_task {
+            color: $text-gray-color;
+            font-size: 1rem;
+            margin-top: 0;
+            font-weight: 300;
+            margin-bottom: 35px;
+        }
+
+        .buttons_delete_task {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+
+            .btn_cancel_delete_task {
+                width: 100%;
+                font-weight: 300;
+                font-size: 1rem;
+                color: $text-black-color;
+                background-color: $button-cancel-color;
+                border: none;
+                border-radius: 8px;
+                height: 51px;
+                cursor: pointer;
+            }
+
+            .btn_delete_task {
+                color: $text-white-color;
+                width: 100%;
+                font-weight: 300;
+                font-size: 1rem;
+                background: rgb(211, 7, 7);
+                background: linear-gradient(90deg, rgba(211, 7, 7, 1) 0%, rgba(240, 83, 83, 1) 100%);
+                border: none;
+                border-radius: 8px;
+                height: 51px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container_tasks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 450px;
+        width: 100%;
+        min-height: 250px;
+        margin: 0 auto;
+        gap: 1rem;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        border: 1px solid $border-light-gray-color;
+        border-radius: .5rem;
+
+        .container_task {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+            cursor: pointer;
+
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .headline_tasks {
+            margin-top: 0;
+            margin-bottom: 7px;
+            font-weight: 400;
+            font-size: 1rem;
+            color: $text-gray-color;
+        }
+
+        .task {
+            display: flex;
+            font-size: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 100%;
+            width: 80%;
+            padding: 0.5rem;
+            border-radius: .5rem;
+            border: 1px dashed $border-gray-color;
+            padding: .8rem;
+
+            &:hover {
+                border: 1px dashed transparent;
+                background-color: $hover-task-color;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        .text_task {
+            color: $text-black-color;
+            margin-left: 10px;
+            font-size: .95rem;
+            font-weight: 400;
+        }
+
+        .task input[type="checkbox"],
+        .task_finished input[type="checkbox"]:checked {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border: 1.5px solid #B0BBD1;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .task input[type="checkbox"]:checked,
+        .task_finished input[type="checkbox"]:checked {
+            background-color: #A0DCF6;
+            border-color: #0796D3;
+        }
+
+        .task input[type="checkbox"]:checked::after,
+        .task_finished input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 4px;
+            width: 15px;
+            height: 15px;
+            background-image: url('../../assets/Icon-check.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .task img,
+        .task_finished img {
+            margin-left: auto;
+        }
+
+        .container_task_finished {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+            cursor: pointer;
+
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .finished_tasks {
+            text-align: center;
+            margin-top: 7px;
+            margin-bottom: 7px;
+            font-weight: 400;
+            font-size: 1rem;
+            color: $text-gray-color;
+        }
+
+        .task_finished {
+            display: flex;
+            font-size: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 100%;
+            width: 80%;
+            padding: 0.5rem;
+            border-radius: .5rem;
+            border: 1px dashed $border-gray-color;
+            padding: .8rem;
+
+            &:hover {
+                border: 1px dashed transparent;
+                background-color: $hover-task-color;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        .text_task_finished {
+            color: $text-gray-color;
+            text-decoration: line-through;
+            margin-left: 10px;
+            font-size: .95rem;
+            font-weight: 400;
+        }
+    }
+
+
+    .container_button {
+        display: flex;
+        justify-content: center;
+        align-self: stretch;
+
+        .btn_new_task {
+            font-weight: 400;
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            max-width: 450px;
+            width: 100%;
+            height: 51px;
+            color: $text-white-color;
+            background: rgb(7, 150, 211);
+            background: linear-gradient(90deg, rgba(7, 150, 211, 1) 0%, rgba(83, 192, 240, 1) 100%);
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 90%;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .container_button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .buttons_new_task {
+        flex-direction: column-reverse;
+    }
+
+    .btn_new_task {
+        width: 100%;
+    }
+
+    .container_new_task {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 1rem;
+    }
+
+    .container_delete_task {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 1rem;
+    }
+
+    .buttons_delete_task {
+        flex-direction: column-reverse;
+    }
+}
