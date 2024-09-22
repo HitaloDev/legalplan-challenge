@@ -95,7 +95,7 @@ const Tasks = () => {
         modalType ? styles.disableInteractions : ""
       }`}
     >
-      <ToastContainer />
+      <ToastContainer className={styles.toast_container} />
       {modalType === "newTask" && (
         <>
           <div

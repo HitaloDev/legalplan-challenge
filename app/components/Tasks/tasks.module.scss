@@ -6,6 +6,10 @@
     height: 100vh;
     flex-direction: column;
 
+    .toast_container {
+        z-index: 300000;
+    }
+
     .overlay {
         position: fixed;
         top: 0;
